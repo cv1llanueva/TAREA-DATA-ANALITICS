@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  </head>
+  <style>
+		h1 {
+			color: mediumseagreen;
+			text-align: center;
+		}
+
+		.warning {
+			color: red;
+			font-weight: bold;
+			text-align: center;
+		}
+		.card{
+		margin-left:410px;
+		margin-top: 20px;
+		color: white;
+		}
+		.container{
+		background:#edf2f7;
+		font-weight: bold;
+		padding-bottom:10px;
+		border-radius: 15px;
+		}
+	</style>
+
+
+
+
+  <body style="background:#BCBBB8">
+  <!--=======================navbar=====================================================-->
+
+<!--==========================================================================================-->
+  <div class="container my-2 mt-2">
+      <h1 class="text-success"> Seleccion de cluster <span class="text-success"></span></h1>
+
+<!--      adding form-->
+      <form action="/predict" method="POST">
+          <div class="row">
+              <div class="col-md-4">
+					<label for="Gender">Genero</label>
+					<input type="text" id="Gender" name="Gender" placeholder="Ingrese el genero" class="form-control" required step="0">
+				</div>
+               <div class="col-md-4">
+					<label for="Age">Edad</label>
+					<input type="number" id="Age" name="Age" placeholder="Ingrese la edad" class="form-control" required step="00">
+				</div>
+          </div>
+
+          <div class="row mt-4">
+				<div class="col-md-4">
+					<label for="Anual_Income">Ingreso anual</label>
+					<input type="number" id="Anual_Income" name="Anual_Income" placeholder="Ingreso anual" class="form-control" required step="00">
+				</div>
+				<div class="col-md-4">
+					<label for="Spending_Score">Puntuacion del score</label>
+					<input type="number" step="0.01" id="Spending_Score" name="Spending_Score" placeholder="Puntuacion 1-100" class="form-control" required step="00">
+				</div>
+
+			</div>
+
+
+
+           <div class="row mt-4">
+
+           <div class="col-md-12 text-center">
+				<button type="submit" class="btn btn-primary btn-lg">Recomendación</button>
+			</div>
+			</div>
+      </form>
+
+
+
+       {% if result %}
+		<div class="card bg-dark" style="width: 18rem;">
+		  <div class="card-body">
+			<h5 class="card-title">La recomendación es:</h5>
+			<p class="card-text">{{ result }}</p>
+		  </div>
+		</div>
+	   {% endif %}
+  </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+  </body>
+</html>
